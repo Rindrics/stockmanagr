@@ -7,6 +7,7 @@
 #' @param lambda Vector of multiple lambdas
 #' @param sigma_constraint \code{sigma.constraint} in \code{\link[frasyr]{vpa}}
 #' @param fcurrent_year \code{fc.year} in \code{\link[frasyr]{vpa}}
+#' @param ... Other args to pass \code{\link[frasyr]{vpa}}
 apply_lambda_to_ridge <- function(lambda,
                                   sigma_constraint,
                                   fcurrent_year,

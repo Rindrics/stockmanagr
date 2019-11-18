@@ -24,4 +24,5 @@ Imports:
     magrittr,
     purrr,
     stringr,
-    tidyr
+    tidyr,
+    assertthat

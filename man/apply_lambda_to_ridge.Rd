@@ -13,6 +13,8 @@ apply_lambda_to_ridge(lambda, sigma_constraint, fcurrent_year, ...)
 \item{sigma_constraint}{\code{sigma.constraint} in \code{\link[frasyr]{vpa}}}
 
 \item{fcurrent_year}{\code{fc.year} in \code{\link[frasyr]{vpa}}}
+
+\item{...}{Other args to pass \code{\link[frasyr]{vpa}}}
 }
 \description{
 This function is a component of \code{\link{make_rhotable}}
