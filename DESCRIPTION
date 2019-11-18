@@ -19,10 +19,12 @@ VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Imports: 
     dplyr,
-    frasyr,
+    frasyr (>= 0.0.0.9000),
     ggplot2,
     magrittr,
     purrr,
     stringr,
     tidyr,
     assertthat
+Remotes:  
+    akikirinrin/frasyr
