@@ -1,11 +1,11 @@
-Package: stockmanagr
+Package: mtwr
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Akira",
+           family = "Hayashi",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "akira.hayashi.1987@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
@@ -27,4 +27,4 @@ Imports:
     tidyr,
     assertthat
 Remotes:  
-    akikirinrin/frasyr
+    ichimomo/frasyr
