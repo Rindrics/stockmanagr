@@ -1,4 +1,4 @@
 library(testthat)
 library(mtwr)
 
-test_check("stockmanagr")
+test_check("mtwr")
