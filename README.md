@@ -1,4 +1,5 @@
 # stockmanagr
+[![Travis build status](https://travis-ci.com/akikirinrin/stockmanagr.svg?branch=master)](https://travis-ci.com/akikirinrin/stockmanagr)
 
 # 機能
 資源評価担当者の以下の作業を補助する関数を提供する
