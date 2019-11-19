@@ -13,6 +13,7 @@
 #' appropriate for finding candidates in the first run with large step,
 #' and \code{n_returned} is for deciding the best value in the final run with
 #' small step.
+#' @export
 select_good_lambda <- function(mohns_rho_tbl, select_by_retro_bias_of,
                                n_returned) {
   assertthat::assert_that(
