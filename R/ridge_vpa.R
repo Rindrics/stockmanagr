@@ -7,8 +7,7 @@
 #' @export
 run_ridge_vpa <- function(sigma_constraint, lambda, dat, fcurrent_year, ...) {
   cat(paste0("lambda = ", lambda, "..."))
-  result <- frasyr::vpa(dat              = dat,
-                        fc.year          = fcurrent_year,
+  result <- frasyr::vpa(fc.year          = fcurrent_year,
                         sigma.constraint = sigma_constraint,
                         lambda           = lambda,
                         tune             = TRUE,
