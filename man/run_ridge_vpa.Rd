@@ -4,14 +4,12 @@
 \alias{run_ridge_vpa}
 \title{Run ridge VPA}
 \usage{
-run_ridge_vpa(sigma_constraint, lambda, dat, fcurrent_year, ...)
+run_ridge_vpa(sigma_constraint, lambda, fcurrent_year, ...)
 }
 \arguments{
 \item{sigma_constraint}{Equals to \code{sigma.const} in \code{\link[frasyr]{vpa}}}
 
 \item{lambda}{ridge回帰係数}
-
-\item{dat}{data for vpa}
 
 \item{fcurrent_year}{Equals to \code{fc.year} in \code{\link[frasyr]{vpa}}}
 
