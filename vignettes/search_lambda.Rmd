@@ -26,20 +26,26 @@ load("../R/sysdata.rda")
 year              <- 2019 # 今年の西暦
 sigma_constraints <- 1:6
 vpa_args          <- list(dat            = dat,
+                          sel.f          = NULL,
+                          rec.new        = NULL,
+                          stat.tf        = "mean",
+                          rec            = NULL,
                           term.F         = "all",
                           Pope           = FALSE,
                           abund          = c("B","B","B","B","B","B"),
                           min.age        = c(0, 1, 2, 3, 0, 2),
                           max.age        = c(0, 1, 2, 3, 1, 3),
+                          link           = "id",
                           est.constraint = FALSE,
                           est.method     = "ml",
                           q.const        = 1:6,
                           b.est          = FALSE,
                           b.const        = 0,
-                          penalty        = "p",
+                          b.fix          = c(1, 1, 1, 1, 1, 1),
+                          penalty        = "f",
+                          alpha          = 1,
                           p.init         = c(0.4, 1.5, 1.5),
                           plot.year      = (year - 15):year)
-```
 
 2次オブジェクトとして生成する
 ```{r}
@@ -53,24 +59,37 @@ fcurrent_year <- (year - 3):(year - 1)
 
 ## 1st trial
 ```{r}
-
 tbl1 <- make_rhotable(lambda = seq(0.1, 1, by = 0.1),
                       sigma_constraint = sigma_constraints,
-                      fcurrent_year    = fcurrent_year,
+                      fcurrent_year  = fcurrent_year,
+                      tf.year        = (year - 1 - nyears_meanf):(year - 2),
                       dat            = vpa_args$dat,
+                      sel.f          = vpa_args$sel.f,
+                      rec.new        = vpa_args$rec.new,
+                      stat.tf        = vpa_args$stat.tf,
+                      rec            = vpa_args$rec,
                       term.F         = vpa_args$term.F,
                       Pope           = vpa_args$Pope,
                       abund          = vpa_args$abund,
                       min.age        = vpa_args$min.age,
                       max.age        = vpa_args$max.age,
+                      link           = vpa_args$link,
                       est.constraint = vpa_args$est.constraint,
                       est.method     = vpa_args$est.method,
                       q.const        = vpa_args$q.const,
                       b.est          = vpa_args$b.est,
                       b.const        = vpa_args$b.const,
+                      b.fix          = vpa_args$b.fix,
                       penalty        = vpa_args$penalty,
+                      alpha          = vpa_args$alpha,
                       p.init         = vpa_args$p.init,
                       plot.year      = vpa_args$plot.year)
+
+select_good_lambda(tbl1,
+                   select_by_retro_bias_of = "B",
+                   n_returned = 2)
+plot_rhos(tbl1) +
+  coord_cartesian(ylim = c(-7, 0))
 
 ```
 
