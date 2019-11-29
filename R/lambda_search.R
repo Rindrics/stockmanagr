@@ -4,6 +4,7 @@
 #'
 #' This function is a component of \code{\link{make_rhotable}}
 #' @inheritParams frasyr::vpa
+#' @inheritParams frasyr::retro.est
 #' @param lambda Vector of multiple lambdas
 #' @param sigma_constraint \code{sigma.constraint} in \code{\link[frasyr]{vpa}}
 #' @param fcurrent_year \code{fc.year} in \code{\link[frasyr]{vpa}}
@@ -11,13 +12,14 @@
 apply_lambda_to_ridge <- function(lambda,
                                   sigma_constraint,
                                   fcurrent_year,
+                                  n,
                                   ...) {
   lambda %>%
     purrr::map(.f = run_ridge_vpa,
                sigma_constraint = sigma_constraint,
                fcurrent_year = fcurrent_year,
                ...) %>%
-    lapply(frasyr::retro.est) %>%
+    lapply(frasyr::retro.est, n = n) %>%
     sapply(pull_mohns_rho)
 }
 
@@ -43,10 +45,11 @@ tidy_rhotable <- function(rhotable, lambda) {
 #'
 #' @inheritParams apply_lambda_to_ridge 
 #' @export
-make_rhotable <- function(lambda, sigma_constraint, fcurrent_year, ...) {
+make_rhotable <- function(lambda, sigma_constraint, fcurrent_year, n = NULL, ...) {
   lambda %>%
     apply_lambda_to_ridge(sigma_constraint = sigma_constraint,
                           fcurrent_year    = fcurrent_year,
+                          n = n,
                           ...) %>%
     tidy_rhotable(lambda = lambda)
 }

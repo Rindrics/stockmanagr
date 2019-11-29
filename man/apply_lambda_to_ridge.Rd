@@ -5,7 +5,7 @@
 \title{Functions to help searching lambda in ridge VPA
 Pass multiple lambda to \code{run_ridge_vpa}}
 \usage{
-apply_lambda_to_ridge(lambda, sigma_constraint, fcurrent_year, ...)
+apply_lambda_to_ridge(lambda, sigma_constraint, fcurrent_year, n, ...)
 }
 \arguments{
 \item{lambda}{Vector of multiple lambdas}
