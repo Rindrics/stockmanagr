@@ -22,7 +22,7 @@ load("../R/sysdata.rda")
 ```
 
 # パラメータ定義
-```{r}
+```{r, eval = FALSE}
 year              <- 2019 # 今年の西暦
 sigma_constraints <- 1:6
 nyears_meanf      <- 3    # Fを平均する期間
@@ -52,7 +52,7 @@ vpa_args          <- list(dat            = dat,
 
 2次オブジェクトとして生成する
 
-```{r}
+```{r, eval = FALSE}
 fcurrent_year <- (year - 3):(year - 1)
 ```
 
@@ -62,7 +62,7 @@ fcurrent_year <- (year - 3):(year - 1)
 図では、判別を楽にするためにrhoの絶対値の対数をプロットしている
 
 ## 1st trial
-```{r}
+```{r, eval = FALSE}
 tbl1 <- make_rhotable(lambda = seq(0.1, 1, by = 0.1),
                       sigma_constraint = sigma_constraints,
                       fcurrent_year  = fcurrent_year,
@@ -98,7 +98,7 @@ plot_rhos(tbl1) +
 
 ```
 
-```{r}
+```{r, eval = FALSE}
 select_good_lambda(tbl1,
                    select_by_retro_bias_of = "B",
                    n_returned = 2)
@@ -108,7 +108,7 @@ plot_rhos(tbl1) +
 ```
 
 ## 2nd trial
-```{r}
+```{r, eval = FALSE}
 
 tbl2 <- make_rhotable(lambda = seq(0.81, 1.0, by = 0.01),
                       sigma_constraint = sigma_constraints,
@@ -138,7 +138,7 @@ tbl2 <- make_rhotable(lambda = seq(0.81, 1.0, by = 0.01),
                       n              = vpa_args$n)
 ```
 
-```{r}
+```{r, eval = FALSE}
 select_good_lambda(tbl2,
                    select_by_retro_bias_of = "B",
                    n_returned = 1)
@@ -147,7 +147,7 @@ plot_rhos(tbl2) +
 ```
 
 ## 3rd trial
-```{r}
+```{r, eval = FALSE}
 
 tbl3 <- make_rhotable(lambda = seq(0.81, 0.9, by = 0.01),
                       sigma_constraint = sigma_constraints,
@@ -169,7 +169,7 @@ tbl3 <- make_rhotable(lambda = seq(0.81, 0.9, by = 0.01),
 
 ```
 
-```{r}
+```{r, eval = FALSE}
 select_good_lambda(tbl3,
                    select_by_retro_bias_of = "B",
                    n_returned = 1)
@@ -179,7 +179,7 @@ plot_rhos(tbl3) +
 
 ## 結果を総合
 
-```{r}
+```{r, eval = FALSE}
 bind_rows(tbl1, tbl2, tbl3) %>%
   select_good_lambda(select_by_retro_bias_of = "B",
                      n_returned = 1)
