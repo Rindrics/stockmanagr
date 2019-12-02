@@ -9,8 +9,6 @@ run_ridge_vpa(sigma_constraint, lambda, fcurrent_year, ...)
 \arguments{
 \item{sigma_constraint}{Equals to \code{sigma.const} in \code{\link[frasyr]{vpa}}}
 
-\item{lambda}{ridge回帰係数}
-
 \item{fcurrent_year}{Equals to \code{fc.year} in \code{\link[frasyr]{vpa}}}
 
 \item{...}{Other arguments to pass to \code{\link[frasyr]{vpa}}}
