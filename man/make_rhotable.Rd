@@ -4,7 +4,8 @@
 \alias{make_rhotable}
 \title{Make Mohn's rho table}
 \usage{
-make_rhotable(lambda, sigma_constraint, fcurrent_year, n = NULL, ...)
+make_rhotable(lambda, sigma_constraint, fcurrent_year,
+  n_retro_est = NULL, ...)
 }
 \arguments{
 \item{lambda}{Vector of multiple lambdas}
