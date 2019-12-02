@@ -12,14 +12,14 @@
 apply_lambda_to_ridge <- function(lambda,
                                   sigma_constraint,
                                   fcurrent_year,
-                                  n,
+                                  n_retro_est,
                                   ...) {
   lambda %>%
     purrr::map(.f = run_ridge_vpa,
                sigma_constraint = sigma_constraint,
                fcurrent_year = fcurrent_year,
                ...) %>%
-    lapply(frasyr::retro.est, n = n) %>%
+    lapply(frasyr::retro.est, n = n_retro_est) %>%
     sapply(pull_mohns_rho)
 }
 
@@ -45,11 +45,11 @@ tidy_rhotable <- function(rhotable, lambda) {
 #'
 #' @inheritParams apply_lambda_to_ridge 
 #' @export
-make_rhotable <- function(lambda, sigma_constraint, fcurrent_year, n = NULL, ...) {
+make_rhotable <- function(lambda, sigma_constraint, fcurrent_year, n_retro_est = NULL, ...) {
   lambda %>%
     apply_lambda_to_ridge(sigma_constraint = sigma_constraint,
                           fcurrent_year    = fcurrent_year,
-                          n = n,
+                          n = n_retro_est,
                           ...) %>%
     tidy_rhotable(lambda = lambda)
 }
