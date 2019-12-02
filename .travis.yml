@@ -3,7 +3,7 @@
 language: R
 sudo: false
 warnings_are_errors: false
-r_check_args: "--no-manual --as--cran"
+r_check_args: "--no-manual --as--cran --no-build-vignettes"
 cache: packages;
 before_deploy:
   - git config --local user.name "Akira Hayashi"
